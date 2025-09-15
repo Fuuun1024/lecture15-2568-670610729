@@ -8,6 +8,7 @@ export const useMarathonFormStore = create<MarathonFormState>((set) => ({
   buyBottle: false,
   buyShoes: false,
   buyCap: false,
+  email: "",
   total: 0,
   setFname: (fname) =>
     set(() => ({
@@ -35,8 +36,9 @@ export const useMarathonFormStore = create<MarathonFormState>((set) => ({
     })),
   setBuyCap: (_buyCap) =>
     set(() => ({
-      buyCap: _buyCap,
+      buyCap: _buyCap, // เมื่อมีการเปลี่ยนแปลง จะเอา _buyCap ไปแทน buyCap
     })),
+    setEmail:(_email)=>set(()=>({email : _email})), //email ต้องตั้งชื่อให้ตรงกับ lib
   // Function คำนวณ total ตรงนี้
   computeTotalPayment: () =>
     set((state) => {
@@ -72,5 +74,6 @@ export const useMarathonFormStore = create<MarathonFormState>((set) => ({
       buyShoes: false,
       buyCap: false,
       total: 0,
+      email: "", // reset ค่า ช่อง email
     }),
 }));
